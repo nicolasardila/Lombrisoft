@@ -1,63 +1,41 @@
 <?php
-use App\Http\Controllers\CultivosController;
-use App\Http\Controllers\InsumosController;
-use App\Http\Controllers\HerramientasController;
-use App\Models\Herramientas;
-use App\Models\Insumos;
+
+use App\Http\Controllers\CamaController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\HomeController;
 
 // Ruta principal
 Route::get('/', function () {
     return view('welcome');
 });
 
-// Rutas de autenticación protegidas por el middleware centralizado
-Auth::routes(['middleware' => 'role.redirect']);
+// Rutas de autenticación
+Auth::routes();
 
-// Rutas protegidas por roles
-Route::middleware(['auth', 'role:admin'])->group(function () {
-    Route::get('/admin', function () {
+// Grupo de rutas para administradores
+Route::middleware(['auth', 'role:admin'])->prefix('admin')->group(function () {
+    Route::get('/', function () {
         return view('admin.dashboard');
     })->name('admin.dashboard');
+
+    // Rutas de gestión de camas
+    Route::get('/formcamas', [CamaController::class, 'create'])->name('camas.create');
+    Route::post('/camas/store', [CamaController::class, 'store'])->name('camas.store');
+    Route::get('/listacamas', [CamaController::class, 'index'])->name('camas.index');
+    Route::get('/camas/{id_cama}', [CamaController::class, 'show'])->name('camas.show');
+    Route::put('/camas/{id_cama}', [CamaController::class, 'update'])->name('camas.update');
+    Route::delete('/camas/{id_cama}', [CamaController::class, 'destroy'])->name('camas.destroy');
 });
 
-Route::middleware(['auth', 'role:pasante'])->group(function () {
-    Route::get('/pasante', function () {
+// Grupo de rutas para pasantes
+Route::middleware(['auth', 'role:pasante'])->prefix('pasante')->group(function () {
+    Route::get('/', function () {
         return view('pasante.dashboard');
     })->name('pasante.dashboard');
 });
 
-Route::middleware(['auth', 'role:aprendiz'])->group(function () {
-    Route::get('/aprendiz', function () {
-        return view('aprendiz.dashboard');
-    })->name('aprendiz.dashboard');
-});
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
- 
-Route::get('/welcome', function() {
-    return view('welcome');
- })->name('welcome');
-
-Route::get('/admin/formcultivo', [CultivosController::class, 'create'])->name('cultivos.create');
-Route::get('/admin/lista',[CultivosController::class, 'index'])->name('cultivos.index');
-Route::post('/admin/cultivos/store',[CultivosController::class, 'store'])->name('cultivos.store');
-Route::delete('/admin/cultivos/{id}',[CultivosController::class, 'destroy'])->name('cultivos.destroy');
-Route::put('/admin/cultivos/{id}',[CultivosController::class, 'update'])->name('cultivos.update');
-
-Route::get('/admin/forminsumo', [InsumosController::class, 'create'])->name('insumos.create');
-Route::get('/admin/listai',[InsumosController::class, 'index'])->name('insumos.index');
-Route::post('/admin/insumos/store',[InsumosController::class, 'store'])->name('insumos.store');
-Route::put('/admin/insumos/{id}',[InsumosController::class, 'update'])->name('insumos.update');
-Route::delete('/admin/insumos/{id}',[InsumosController::class, 'destroy'])->name('insumos.destroy');
-
-Route::get('/admin/formherramientas', [HerramientasController::class, 'create'])->name('herramientas.create');
-Route::post('/admin/herramientas/store',[HerramientasController::class, 'store'])->name('herramientas.store');
-Route::get('/admin/listah',[HerramientasController::class, 'index'])->name('herramientas.index');
-Route::put('/admin/herramientas/{id}',[HerramientasController::class, 'update'])->name('herramientas.update');
-Route::delete('/admin/herramientas/{id}',[HerramientasController::class, 'destroy'])->name('herramientas.destroy');
+// Ruta de bienvenida y home
+Route::view('/welcome', 'welcome')->name('welcome');
+Route::get('/home', [HomeController::class, 'index'])->name('home');

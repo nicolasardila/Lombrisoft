@@ -8,25 +8,25 @@
     <link rel="icon" href="{{ asset('images/Favicon2.png')}}" type="image/x-icon">
     <title>Bienvenido</title>
     <!-- Google Font: Source Sans Pro -->
-  <link rel="stylesheet" href="{{ asset('AdminLTE-3.2.0/https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback') }}">
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="{{ asset('AdminLTE-3.2.0/plugins/fontawesome-free/css/all.min.css') }}">
-  <!-- Theme style -->
-  <link rel="stylesheet" href="{{ asset('AdminLTE-3.2.0/dist/css/adminlte.min.css') }}">
-  <!-- overlayScrollbars -->
-  <link rel="stylesheet" href="{{ asset('AdminLTE-3.2.0/plugins/overlayScrollbars/css/OverlayScrollbars.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('AdminLTE-3.2.0/https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback') }}">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="{{ asset('AdminLTE-3.2.0/plugins/fontawesome-free/css/all.min.css') }}">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="{{ asset('AdminLTE-3.2.0/dist/css/adminlte.min.css') }}">
+    <!-- overlayScrollbars -->
+    <link rel="stylesheet" href="{{ asset('AdminLTE-3.2.0/plugins/overlayScrollbars/css/OverlayScrollbars.min.css') }}">
 
-  <script src="{{ asset('js/app.js') }}" defer></script>
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
 <body>
     <nav class="main-header navbar navbar-expand navbar-white navbar-light">
         <!-- Left navbar links -->
         <ul class="navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
-          </li>
+            <li class="nav-item">
+                <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+            </li>
         </ul>
 
         <!-- Right navbar links -->
@@ -38,7 +38,7 @@
 
                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" href="{{ route('logout') }}"
-                       onclick="event.preventDefault();
+                        onclick="event.preventDefault();
                                      document.getElementById('logout-form').submit();">
                         {{ __('Cerrar Sesiòn') }}
                     </a>
@@ -49,118 +49,69 @@
                 </div>
             </li>
         </ul>
-      </nav>
-    <aside class="main-sidebar sidebar-success-green elevation-4">
+    </nav>
+    <aside class="main-sidebar sidebar-success-green elevation-10">
         <div class="sidebar">
             <!-- Sidebar Menu -->
             <nav class="mt-2">
                 <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                     data-accordion="false">
-                    <br><br><br><br>
+                    <br><br>
+                    <li class="nav-item">
+                        <center>
+                        <a class="nav-link" href="{{ url('/admin') }}" role="button">
+                            <img src="{{ asset('images/Favicon2.png') }}" alt="Inicio" style="height: 100px;">
+                        </a>
+                        </center>
+                    </li>
 
+                    <!-- Unidades Productivas -->
                     <!-- Unidades Productivas -->
                     <li class="nav-item has-treeview">
                         <a href="#" class="nav-link text-success">
                             <i class="fas fa-seedling"></i> &nbsp;
                             <p>
-                                Unidades Productivas
+                                Camas Lombricultivo
                                 <i class="fas fa-angle-left right"></i>
                             </p>
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                            <a href="{{ route('cultivos.create') }}" class="nav-link text-dark">
+                                <a href="{{ route('camas.create') }}" class="nav-link text-dark">
                                     <i class="nav-icon fas fa-edit"></i>
                                     <p>Ingreso</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ route('cultivos.index') }}" class="nav-link text-dark">
+                                <a href="{{ route('camas.index') }}" class="nav-link text-dark">
                                     <i class="nav-icon fas fa-clipboard-list"></i>
                                     <p>Listas</p>
                                 </a>
                             </li>
                         </ul>
                     </li>
-
-                    <!-- Bodega Finca -->
                     <li class="nav-item has-treeview">
                         <a href="#" class="nav-link text-success">
-                            <i class="fas fa-warehouse"></i>&nbsp;
+                            <i class="fas fa-seedling"></i> &nbsp;
                             <p>
-                                Bodega Finca
+                                Herramientas
                                 <i class="fas fa-angle-left right"></i>
                             </p>
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="{{ asset('AdminLTE-3.2.0/pages/UI/general.html') }}"
-                                    class="nav-link text-dark">
-                                    <i class="nav-icon fas fa-box"></i>
-                                    <p>Insumos</p>
-                                    <i class="fas fa-angle-left right"></i>
-                                </a>
-                                <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                            <a href="{{ route('insumos.create') }}" class="nav-link text-danger">
+                                <a href="#" class="nav-link text-dark">
                                     <i class="nav-icon fas fa-edit"></i>
                                     <p>Ingreso</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ route('insumos.index') }}" class="nav-link text-danger">
+                                <a href="#" class="nav-link text-dark">
                                     <i class="nav-icon fas fa-clipboard-list"></i>
                                     <p>Listas</p>
                                 </a>
                             </li>
                         </ul>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{ asset('AdminLTE-3.2.0/pages/UI/icons.html') }}" class="nav-link text-dark">
-                                    <i class="nav-icon fas fa-tools"></i>
-                                    <p>Herramientas</p>
-                                    <i class="fas fa-angle-left right"></i>
-                                </a>
-                                <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                            <a href="{{ route('herramientas.create') }}" class="nav-link text-danger">
-                                    <i class="nav-icon fas fa-edit"></i>
-                                    <p>Ingreso</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{ route('herramientas.index') }}" class="nav-link text-danger">
-                                    <i class="nav-icon fas fa-clipboard-list"></i>
-                                    <p>Listas</p>
-                                </a>
-                            </li>
-                        </ul>
-                            </li>
-                        </ul>
-                    </li>
-
-                    <!-- Roles Mayordomo -->
-                    <li class="nav-item">
-                        <a href="{{ asset('AdminLTE-3.2.0/pages/widgets.html') }}" class="nav-link text-success">
-                            <i class="fas fa-user"></i>&nbsp;
-                            <p>Roles Mayordomo</p>
-                        </a>
-                    </li>
-
-                    <!-- Análisis de Producción -->
-                    <li class="nav-item">
-                        <a href="{{ asset('AdminLTE-3.2.0/pages/widgets.html') }}" class="nav-link text-success">
-                            <i class="fas fa-chart-bar"></i>&nbsp;
-                            <p>Análisis de Producción</p>
-                        </a>
-                    </li>
-
-                    <!-- Geo Referencias -->
-                    <li class="nav-item">
-                        <a href="#" class="nav-link text-success">
-                            <i class="nav-icon fas fa-globe"></i>
-                            <p>Geo Referencias</p>
-                        </a>
                     </li>
 
                     <!-- Reportes -->

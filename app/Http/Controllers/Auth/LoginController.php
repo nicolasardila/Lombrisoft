@@ -45,9 +45,7 @@ class LoginController extends Controller
         case 'admin':
             return route('admin.dashboard'); // Redirige al panel de admin
         case 'pasante':
-            return route('pasante.dashboard'); // Redirige al panel de trabajador
-        case 'aprendiz':
-            return route('aprendiz.dashboard'); // Redirige al panel de mayordomo
+            return route('pasante.dashboard'); // Redirige al panel depasante
         default:
             return route('home'); // Redirige al home si no tiene un rol específico
     }

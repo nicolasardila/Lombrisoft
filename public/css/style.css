@@ -1,0 +1,663 @@
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+  }
+  .container-fluid {
+    padding: 0 15px;
+}
+
+.card {
+    width: 100%;
+    margin: 0 auto;
+}
+  
+  b/* Fondo de gradiente institucional verde */
+body {
+    background: linear-gradient(120deg, #a5d6a7, #66bb6a, #388e3c);
+    background-size: 400% 400%;
+    animation: gradientAnimation 15s ease infinite;
+    color: #333;
+    font-family: 'Arial', sans-serif;
+    overflow-x: hidden;
+    position: relative;
+  }
+  .logout-container {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+  }
+  
+  .logout-btn {
+    background-color: #4CAF50; /* Verde institucional */
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    border-radius: 5px;
+  }
+  
+  .logout-btn i {
+    margin-right: 5px;
+  }
+  
+  .logout-btn:hover {
+    background-color: #45a049; /* Verde más oscuro en hover */
+  }
+  
+  /* Animación de gradiente */
+  @keyframes gradientAnimation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+  
+  /* Configuración de partículas */
+  .particles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+  }
+  
+  .particle {
+    position: absolute;
+    background-color: rgba(46, 125, 50, 0.2); /* Verde institucional en transparencia */
+    border-radius: 50%;
+    opacity: 0.8;
+    animation: float 20s ease-in-out infinite;
+  }
+  
+  .particle:nth-child(1) { width: 80px; height: 80px; top: 20%; left: 10%; animation-delay: 0s; }
+  .particle:nth-child(2) { width: 60px; height: 60px; top: 70%; left: 20%; animation-delay: 3s; }
+  .particle:nth-child(3) { width: 100px; height: 100px; top: 40%; left: 80%; animation-delay: 6s; }
+  .particle:nth-child(4) { width: 50px; height: 50px; top: 30%; left: 60%; animation-delay: 9s; }
+  .particle:nth-child(5) { width: 90px; height: 90px; top: 80%; left: 50%; animation-delay: 12s; }
+  .particle:nth-child(6) { width: 70px; height: 70px; top: 50%; left: 30%; animation-delay: 15s; }
+  
+  /* Animación de flotación de partículas */
+  @keyframes float {
+    0% { transform: translateY(0px) translateX(0px); }
+    50% { transform: translateY(-30px) translateX(20px); }
+    100% { transform: translateY(0px) translateX(0px); }
+  }
+  
+  
+  /* Header */
+  /* Header */
+.header {
+    background-color: #ffffff; /* Fondo blanco */
+    color: #2e7d32; /* Color de texto verde institucional */
+    padding: 15px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+  
+  .logo-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: fadeIn 1s ease; /* Animación de entrada */
+  }
+  
+  .header .logo {
+    height: 60px;
+    width: auto;
+  }
+  
+  .title-container {
+    text-align: left;
+  }
+  
+  .header-title {
+    font-size: 1.8em;
+    margin: 0;
+    font-weight: bold;
+    color: #2e7d32; /* Verde institucional */
+    animation: slideIn 1s ease; /* Animación de entrada */
+  }
+  
+  .header-subtitle {
+    font-size: 1em;
+    color: #388e3c; /* Verde más claro */
+    margin-top: 5px;
+  }
+  
+  .header:hover {
+    transform: scale(1.02); /* Efecto de escala al pasar el cursor */
+    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.15); /* Mayor sombra en hover */
+  }
+  
+  /* Animaciones */
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  
+  @keyframes slideIn {
+    from { transform: translateX(-50px); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+  }
+  
+  /* Sección de Información General */
+  .info-section {
+    max-width: 1000px;
+    margin: 20px auto;
+    padding: 30px;
+    background-color: #a5d6a7;
+    border-radius: 10px;
+    color: #2e7d32;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  
+  .info-section h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+  }
+  
+  .info-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+  }
+  
+  .info-item {
+    background-color: #e8f5e9;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+  }
+  
+  .info-item h3 {
+    color: #2e7d32;
+    margin-bottom: 10px;
+    font-size: 1.4em;
+  }
+  
+  .info-item p {
+    font-size: 1em;
+    color: #4f8a52;
+    margin-bottom: 10px;
+  }
+  
+  .info-item ul {
+    list-style: none;
+    padding-left: 0;
+  }
+  
+  .info-item li {
+    margin: 5px 0;
+    font-weight: bold;
+    color: #388e3c;
+  }
+  
+  .info-item:hover {
+    transform: translateY(-5px);
+  }
+  
+  /* Contenedores */
+  .container-grid {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .contenedores {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  
+  .contenedor {
+    background-color: #66bb6a; /* Verde claro */
+    color: white;
+    padding: 15px;
+    border-radius: 10px;
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.2s, background-color 0.3s;
+  }
+  
+  .contenedor img {
+    width: 100px;
+    height: auto;
+    margin-bottom: 10px;
+  }
+  
+  .contenedor:hover {
+    background-color: #4caf50; /* Verde intermedio */
+    transform: scale(1.05);
+  }
+  /* Herramientas */
+/* Herramientas */
+.herramientas {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.herramienta {
+  background-color: #66bb6a; /* Verde claro */
+  color: white;
+  padding: 20px;
+  border-radius: 15px;
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.3s, background-color 0.3s, box-shadow 0.3s;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.herramienta img {
+  width: 100px;
+  height: auto;
+  margin-bottom: 15px;
+  border-radius: 50%;
+  border: 2px solid white;
+  transition: transform 0.3s;
+}
+
+.herramienta p {
+  font-size: 1.2em;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.herramienta:hover {
+  background-color: #4caf50; /* Verde intermedio */
+  transform: scale(1.05);
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.herramienta:hover img {
+  transform: scale(1.1);
+}
+
+.herramienta .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  opacity: 0;
+  transition: opacity 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 15px;
+}
+
+.herramienta:hover .overlay {
+  opacity: 1;
+}
+
+.herramienta .overlay p {
+  margin: 0;
+  font-size: 1.2em;
+  font-weight: bold;
+}
+/* Estilos para el botón de agregar herramienta */
+.add-tool-btn {
+  background-color: #4CAF50; /* Verde */
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+.add-tool-btn:hover {
+  background-color: #45a049;
+}
+
+/* Estilos para los modales */
+.modal {
+  display: none; /* Oculto por defecto */
+  position: fixed; /* Fijo en la pantalla */
+  z-index: 1; /* Por encima de otros elementos */
+  left: 0;
+  top: 0;
+  width: 100%; /* Ancho completo */
+  height: 100%; /* Alto completo */
+  overflow: auto; /* Habilitar scroll si es necesario */
+  background-color: rgb(0,0,0); /* Color de fondo */
+  background-color: rgba(0,0,0,0.4); /* Fondo con opacidad */
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto; /* Centrado vertical y horizontal */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%; /* Ancho del modal */
+  max-width: 600px; /* Ancho máximo del modal */
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* Estilos para los botones dentro del modal */
+.update-tool-btn, .delete-tool-btn, .change-status-tool-btn {
+  background-color: #008CBA; /* Azul */
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  margin: 5px;
+}
+
+.update-tool-btn:hover {
+  background-color: #007bb5;
+}
+
+.delete-tool-btn {
+  background-color: #f44336; /* Rojo */
+}
+
+.delete-tool-btn:hover {
+  background-color: #da190b;
+}
+
+.change-status-tool-btn {
+  background-color: #ff9800; /* Naranja */
+}
+
+.change-status-tool-btn:hover {
+  background-color: #e68a00;
+}
+
+/* Estilos para el formulario dentro del modal */
+#add-tool-form label, #update-tool-form label {
+  display: block;
+  margin-top: 10px;
+}
+
+#add-tool-form input, #add-tool-form textarea, #update-tool-form input, #update-tool-form textarea {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+#add-tool-form button, #update-tool-form button {
+  background-color: #4CAF50; /* Verde */
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+#add-tool-form button:hover, #update-tool-form button:hover {
+  background-color: #45a049;
+}
+  
+  /* Modal */
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+  
+  .modal-content {
+    background-color: white;
+    margin: 15% auto;
+    padding: 20px;
+    border-radius: 10px;
+    width: 80%;
+    max-width: 500px;
+    text-align: left;
+  }
+  
+  .modal-content h2 {
+    margin-bottom: 10px;
+  }
+  
+  .modal-content ul {
+    list-style-type: none;
+  }
+  
+  .modal-content li {
+    margin: 5px 0;
+    font-weight: bold;
+  }
+  
+  .close {
+    color: #333;
+    float: right;
+    font-size: 28px;
+    cursor: pointer;
+  }
+  
+  .close:hover {
+    color: red;
+  }
+  /* Estilos para el botón de agregar cama */
+.add-bed-btn {
+  background-color: #4CAF50; /* Verde */
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+.add-bed-btn:hover {
+  background-color: #45a049;
+}
+
+/* Estilos para los modales */
+.modal {
+  display: none; /* Oculto por defecto */
+  position: fixed; /* Fijo en la pantalla */
+  z-index: 1; /* Por encima de otros elementos */
+  left: 0;
+  top: 0;
+  width: 100%; /* Ancho completo */
+  height: 100%; /* Alto completo */
+  overflow: auto; /* Habilitar scroll si es necesario */
+  background-color: rgb(0,0,0); /* Color de fondo */
+  background-color: rgba(0,0,0,0.4); /* Fondo con opacidad */
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto; /* Centrado vertical y horizontal */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%; /* Ancho del modal */
+  max-width: 600px; /* Ancho máximo del modal */
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* Estilos para los botones dentro del modal */
+.update-btn, .delete-btn, .change-status-btn {
+  background-color: #008CBA; /* Azul */
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  margin: 5px;
+}
+
+.update-btn:hover {
+  background-color: #007bb5;
+}
+
+.delete-btn {
+  background-color: #f44336; /* Rojo */
+}
+
+.delete-btn:hover {
+  background-color: #da190b;
+}
+
+.change-status-btn {
+  background-color: #ff9800; /* Naranja */
+}
+
+.change-status-btn:hover {
+  background-color: #e68a00;
+}
+
+/* Estilos para el formulario dentro del modal */
+#add-bed-form label, #update-bed-form label {
+  display: block;
+  margin-top: 10px;
+}
+
+#add-bed-form input, #add-bed-form textarea, #update-bed-form input, #update-bed-form textarea {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+#add-bed-form button, #update-bed-form button {
+  background-color: #4CAF50; /* Verde */
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+#add-bed-form button:hover, #update-bed-form button:hover {
+  background-color: #45a049;
+}
+  
+  /* Footer */
+  /* Footer */
+.footer {
+    background-color: #2e7d32; /* Verde institucional */
+    color: white;
+    padding: 30px 0;
+    text-align: center;
+  }
+  
+  .footer-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+  }
+  
+  .footer-section {
+    flex: 1;
+    min-width: 200px;
+    margin-bottom: 20px;
+  }
+  
+  .footer-section h3 {
+    margin-bottom: 15px;
+    font-size: 1.2em;
+  }
+  
+  .footer-section p,
+  .footer-section ul,
+  .footer-section a {
+    font-size: 0.9em;
+    color: #ffffff;
+    text-decoration: none;
+  }
+  
+  .footer-section ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .footer-section ul li {
+    margin-bottom: 10px;
+  }
+  
+  .footer-section ul li a:hover {
+    color: #a5d6a7;
+  }
+  
+  .footer-bottom {
+    margin-top: 20px;
+    font-size: 0.8em;
+    color: #e0e0e0;
+  }
+  
+  /* Iconos de redes sociales */
+  .social-icons {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin-top: 10px;
+  }
+  
+  .social-icons a {
+    font-size: 1.5em;
+    color: white;
+    transition: color 0.3s;
+  }
+  
+  .social-icons a:hover {
+    color: #a5d6a7; /* Color verde claro al hacer hover */
+  }

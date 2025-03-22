@@ -17,8 +17,6 @@ class RedirectIfAuthenticatedWithRole
                     return redirect()->route('admin.dashboard');
                 case 'pasante':
                     return redirect()->route('pasante.dashboard');
-                case 'aprendiz':
-                    return redirect()->route('aprendiz.dashboard');
             }
         }
 

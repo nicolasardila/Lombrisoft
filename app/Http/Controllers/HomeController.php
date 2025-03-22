@@ -30,8 +30,6 @@ class HomeController extends Controller
             return redirect()->route('admin.dashboard');
         case 'pasante':
             return redirect()->route('pasante.dashboard');
-        case 'aprendiz':
-            return redirect()->route('aprendiz.dashboard');
         default:
             return view('home'); // Si no tiene un rol específico
     }
