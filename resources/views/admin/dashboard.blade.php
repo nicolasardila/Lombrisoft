@@ -29,6 +29,33 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <link rel="stylesheet" href="{{ asset('css/style.css') }}">
   <link rel="shortcut icon" href="img/sena-logo.png" type="image/x-icon">
+  <style>
+    .contenedores {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+    }
+    .contenedor {
+      flex: 1 1 calc(33.333% - 10px);
+      box-sizing: border-box;
+      margin: 5px;
+      text-align: center;
+    }
+    .contenedor img {
+      max-width: 100%;
+      height: auto;
+    }
+    @media (max-width: 768px) {
+      .contenedor {
+        flex: 1 1 calc(50% - 10px);
+      }
+    }
+    @media (max-width: 480px) {
+      .contenedor {
+        flex: 1 1 100%;
+      }
+    }
+  </style>
 </head>
 <body>
     <div class="particles">
