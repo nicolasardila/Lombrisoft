@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="icon" href="{{ asset('images/Favicon2.png')}}" type="image/x-icon">
-    <title>Bienvenido</title>
+    <title>Lombrisoft</title>
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet" href="{{ asset('AdminLTE-3.2.0/https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback') }}">
     <!-- Font Awesome -->
@@ -18,6 +18,17 @@
 
     <script src="{{ asset('js/app.js') }}" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <style>
+        .main-sidebar {
+            height: 100vh; /* Hace que el aside cubra toda la altura de la ventana */
+            position: fixed; /* Fija el aside para que siempre esté visible */
+            top: 0;
+            bottom: 0;
+        }
+        .content-wrapper {
+            margin-left: 250px; /* Ajusta el margen izquierdo para que no se superponga con el aside */
+        }
+    </style>
 </head>
 
 <body>
@@ -31,107 +42,101 @@
 
         <!-- Right navbar links -->
         <ul class="navbar-nav ml-auto">
-            <li class="nav-item dropdown">
-                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                    {{ Auth::user()->name }}
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                    <i class="fas fa-sign-out-alt"></i> {{ __('Cerrar Sesión') }}
                 </a>
-
-                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="{{ route('logout') }}"
-                        onclick="event.preventDefault();
-                                     document.getElementById('logout-form').submit();">
-                        {{ __('Cerrar Sesiòn') }}
-                    </a>
-
-                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                        @csrf
-                    </form>
-                </div>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                    @csrf
+                </form>
             </li>
         </ul>
     </nav>
-    <aside class="main-sidebar sidebar-success-green elevation-10">
+    <aside class="main-sidebar sidebar-dark-primary">
+        <a href="{{ url('/admin') }}" class="brand-link">
+            <img src="{{ asset('images/Favicon2.png') }}" alt="Lombrisoft Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+            <span class="brand-text font-weight-light">Lombrisoft</span>
+        </a>
         <div class="sidebar">
+            <!-- Sidebar user panel (optional) -->
+            <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+                <div class="info">
+                    <a href="#" class="d-block">{{ Auth::user()->name }}</a>
+                </div>
+            </div>
             <!-- Sidebar Menu -->
             <nav class="mt-2">
-                <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
-                    data-accordion="false">
-                    <br><br>
+                <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                     <li class="nav-item">
-                        <center>
-                        <a class="nav-link" href="{{ url('/admin') }}" role="button">
-                            <img src="{{ asset('images/Favicon2.png') }}" alt="Inicio" style="height: 100px;">
+                        <a href="{{ url('/admin') }}" class="nav-link">
+                            <i class="nav-icon fas fa-home"></i>
+                            <p>Inicio</p>
                         </a>
-                        </center>
                     </li>
-
-                    <!-- Unidades Productivas -->
-                    <!-- Unidades Productivas -->
                     <li class="nav-item has-treeview">
-                        <a href="#" class="nav-link text-success">
-                            <i class="fas fa-seedling"></i> &nbsp;
+                        <a href="#" class="nav-link">
+                            <img src="{{ asset('images/contenedor.png') }}" alt="Contenedor Icon" class="nav-icon">
                             <p>
                                 Camas Lombricultivo
-                                <i class="fas fa-angle-left right"></i>
+                                <i class="right fas fa-angle-left"></i>
                             </p>
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="{{ route('camas.create') }}" class="nav-link text-dark">
-                                    <i class="nav-icon fas fa-edit"></i>
+                                <a href="{{ route('camas.create') }}" class="nav-link">
+                                    <i class="fas fa-edit nav-icon"></i>
                                     <p>Ingreso</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ route('camas.index') }}" class="nav-link text-dark">
-                                    <i class="nav-icon fas fa-clipboard-list"></i>
+                                <a href="{{ route('camas.index') }}" class="nav-link">
+                                    <i class="fas fa-clipboard-list nav-icon"></i>
                                     <p>Listas</p>
                                 </a>
                             </li>
                         </ul>
                     </li>
                     <li class="nav-item has-treeview">
-                        <a href="#" class="nav-link text-success">
-                            <i class="fas fa-seedling"></i> &nbsp;
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon fas fa-tools"></i>
                             <p>
                                 Herramientas
-                                <i class="fas fa-angle-left right"></i>
+                                <i class="right fas fa-angle-left"></i>
                             </p>
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="#" class="nav-link text-dark">
-                                    <i class="nav-icon fas fa-edit"></i>
+                                <a href="#" class="nav-link">
+                                    <i class="fas fa-edit nav-icon"></i>
                                     <p>Ingreso</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="#" class="nav-link text-dark">
-                                    <i class="nav-icon fas fa-clipboard-list"></i>
+                                <a href="#" class="nav-link">
+                                    <i class="fas fa-clipboard-list nav-icon"></i>
                                     <p>Listas</p>
                                 </a>
                             </li>
                         </ul>
                     </li>
-
-                    <!-- Reportes -->
                     <li class="nav-item has-treeview">
-                        <a href="#" class="nav-link text-danger">
+                        <a href="#" class="nav-link">
                             <i class="nav-icon fas fa-file-alt"></i>
-                            <p>Reportes<i class="fas fa-angle-left right"></i></p>
+                            <p>
+                                Reportes
+                                <i class="right fas fa-angle-left"></i>
+                            </p>
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="{{ asset('AdminLTE-3.2.0/pages/tables/simple.html') }}"
-                                    class="nav-link text-dark">
-                                    <i class="nav-icon fas fa-tasks"></i>
+                                <a href="{{ asset('AdminLTE-3.2.0/pages/tables/simple.html') }}" class="nav-link">
+                                    <i class="fas fa-tasks nav-icon"></i>
                                     <p>Actividades</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ asset('AdminLTE-3.2.0/pages/tables/data.html') }}"
-                                    class="nav-link text-dark">
-                                    <i class="nav-icon fas fa-file-invoice-dollar"></i>
+                                <a href="{{ asset('AdminLTE-3.2.0/pages/tables/data.html') }}" class="nav-link">
+                                    <i class="fas fa-file-invoice-dollar nav-icon"></i>
                                     <p>Contable</p>
                                 </a>
                             </li>
